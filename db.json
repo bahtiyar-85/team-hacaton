@@ -1,3 +1,49 @@
 {
-    "products":[]
+  "products": [
+    {
+      "title": "van peace",
+      "desc": "manga",
+      "author": "mang",
+      "price": "44",
+      "url": "https://staticlib.me/uploads/cover/one-piece-digital-colored-comics/cover/4afkvwegWz5n_250x350.jpg",
+      "genre": "senan",
+      "id": 1
+    },
+    {
+      "title": "sdf",
+      "desc": "sdf",
+      "author": "sdf",
+      "price": "sfdsf",
+      "url": "https://staticlib.me/uploads/cover/one-piece-digital-colored-comics/cover/4afkvwegWz5n_250x350.jpg",
+      "genre": "sdf",
+      "id": 2
+    },
+    {
+      "title": "sdf",
+      "desc": "sdf",
+      "author": "df",
+      "price": "sdfs",
+      "url": "https://staticlib.me/uploads/cover/one-piece-digital-colored-comics/cover/4afkvwegWz5n_250x350.jpg",
+      "genre": "sdf",
+      "id": 3
+    },
+    {
+      "title": "dfg",
+      "desc": "fg",
+      "author": "dfgd",
+      "price": "dfg",
+      "url": "https://staticlib.me/uploads/cover/one-piece-digital-colored-comics/cover/4afkvwegWz5n_250x350.jpg",
+      "genre": "dfg",
+      "id": 4
+    },
+    {
+      "title": "dfgdfg",
+      "desc": "dfgdfg",
+      "author": "dfg",
+      "price": "dfg",
+      "url": "https://staticlib.me/uploads/cover/one-piece-digital-colored-comics/cover/4afkvwegWz5n_250x350.jpg",
+      "genre": "dfgdgf",
+      "id": 5
+    }
+  ]
 }
