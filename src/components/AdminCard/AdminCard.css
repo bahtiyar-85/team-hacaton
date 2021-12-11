@@ -1,0 +1,10 @@
+.admin-card {
+    display: flex;
+    
+    margin: 10px;
+    width: 45%;
+    height: 150px;
+}
+.admin-card-img {
+    width: 100%;
+}

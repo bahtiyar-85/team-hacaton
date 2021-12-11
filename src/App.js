@@ -1,9 +1,15 @@
 import React from 'react';
+import AdminPage from './components/AdminPage/AdminPage';
+import Header from './components/Header/Header';
+import ProductsContextProvider from './contexts/productsContext';
 
 const App = () => {
   return (
     <div>
-      App
+      <ProductsContextProvider>
+        <Header/>
+        <AdminPage/>
+      </ProductsContextProvider>
     </div>
   );
 };

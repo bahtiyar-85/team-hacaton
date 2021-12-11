@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.appbar {
+  background-color: rgba(0, 0, 0, 0) !important;
+  box-shadow: none !important;
+  /* position: sticky !important; */
+  /* position: absolute !important; */
+  /* z-index: 1 !important; */
+  /* top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 8vh !important; */
+}
