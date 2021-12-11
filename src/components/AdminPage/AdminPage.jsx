@@ -1,20 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button, Card, CardActions, CardContent, CardMedia, Container, TextField, Typography } from '@mui/material';
+import { Button, Container, TextField } from '@mui/material';
 import { Box } from '@mui/system';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogTitle from '@mui/material/DialogTitle';
+
 import { productsContext } from '../../contexts/productsContext';
 import AdminCard from '../AdminCard/AdminCard';
 
 const AdminPage = () => {
-    // const [product, setProduct] = useState({
-    //     title:'',
-    //     desc:'',
-    //     author:'',
-    //     price:'',
-    //     url:'',
-    //     genre:'',
-    // });
+   
     const [showInput, setShowInput] = useState(false);
-    const { createProduct, products, getProducts } = useContext(productsContext);
+    const { createProduct, products, getProducts, updateProducts } = useContext(productsContext);
 
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
@@ -22,12 +19,38 @@ const AdminPage = () => {
     const [price, setPrice] = useState('');
     const [url, setUrl] = useState('');
     const [genre, setGenre] = useState('');
+    const [id, setId] = useState('')
   
+
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+      cleanInput();
+    };
+
     useEffect(() => {
        getProducts();
     }, [])    
 
+    function cleanInput(){
+        setTitle('');
+        setDesc('');
+        setAuthor('');
+        setPrice('');
+        setGenre('');
+        setUrl('');
+    }
     function handleValues(){
+          
+        if(!title || !desc || !price || !genre|| !author || !url){
+            alert('One of the field is empty!')
+            return;
+        }
         let product = {
             title,
             desc,
@@ -39,15 +62,42 @@ const AdminPage = () => {
         createProduct(product);
 
         console.log('newProduct', product);
-         setTitle('');
-         setDesc('');
-         setAuthor('');
-         setPrice('');
-         setGenre('');
-         setUrl('');
+        cleanInput();
 
     }
     
+    function productToEdit(editProduct){
+        setTitle(editProduct.title);
+        setDesc(editProduct.desc);
+        setAuthor(editProduct.author);
+        setPrice(editProduct.price);
+        setGenre(editProduct.genre);
+        setUrl(editProduct.url);
+        setId(editProduct.id)
+
+        setShowInput(false);
+        handleClickOpen();
+    }
+
+    function handleEditValues(){
+        
+        if(!title || !desc || !price || !genre|| !author || !url){
+            alert('One of the field is empty!')
+            return;
+        }
+        let product = {
+            title,
+            desc,
+            author,
+            price,
+            url,
+            genre
+         }
+        updateProducts(id, product);
+        handleClose();
+        cleanInput();
+
+    }
   
     console.log('array',products);
     return (
@@ -67,7 +117,7 @@ const AdminPage = () => {
                     <TextField onChange={(e) => setTitle(e.target.value)} id="input-add-1" label="Title" variant="outlined" value={title}/>
                     <TextField onChange={(e) => setDesc(e.target.value)} id="input-add-2" label="Description" variant="outlined" value={desc}/>
                     <TextField onChange={(e) => setAuthor(e.target.value)} id="input-add-3" label="Author" variant="outlined" value={author} />
-                    <TextField onChange={(e) => setPrice(e.target.value)} id="input-add-4" label="Price" variant="outlined" value={price}/>
+                    <TextField onChange={(e) => setPrice(e.target.value)} id="input-add-4"  type="number" label="Price" variant="outlined" value={price}/>
                     <TextField onChange={(e) => setUrl(e.target.value)} id="input-add-5" label="URL" variant="outlined" value={url} />
                     <TextField onChange={(e) => setGenre(e.target.value)} id="input-add-6" label="Genre" variant="outlined" value={genre} />
                     <Button onClick={handleValues} variant="contained" >Create </Button>
@@ -77,8 +127,30 @@ const AdminPage = () => {
             }
             <div style={{display:'flex', flexWrap:'wrap'}}>
            {    
-               products.map((item)=><AdminCard key={item.id} item={item}/>)
+               products.map((item)=><AdminCard key={item.id} item={item} productToEdit={productToEdit}/>)
            }
+            <Dialog open={open} onClose={handleClose}>
+                <DialogTitle>Change form</DialogTitle>
+                <Box
+                    component="form"
+                    sx={{
+                        '& > :not(style)': { m: 1, width: '50ch', display:'flex', flexDirection:'column' },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                    >
+                    <TextField onChange={(e) => setTitle(e.target.value)} id="input-add-7" label="Title" variant="outlined" value={title}/>
+                    <TextField onChange={(e) => setDesc(e.target.value)} id="input-add-8" label="Description" variant="outlined" value={desc}/>
+                    <TextField onChange={(e) => setAuthor(e.target.value)} id="input-add-9" label="Author" variant="outlined" value={author} />
+                    <TextField onChange={(e) => setPrice(e.target.value)} id="input-add-10"  type="number" label="Price" variant="outlined" value={price}/>
+                    <TextField onChange={(e) => setUrl(e.target.value)} id="input-add-11" label="URL" variant="outlined" value={url} />
+                    <TextField onChange={(e) => setGenre(e.target.value)} id="input-add-12" label="Genre" variant="outlined" value={genre} />
+                </Box>
+                <DialogActions>
+                <Button onClick={handleEditValues}>Save changes</Button>
+                <Button onClick={handleClose}>Cancel</Button>
+                </DialogActions>
+            </Dialog>
             </div>
         </Container>
         

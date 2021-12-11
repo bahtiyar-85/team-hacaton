@@ -1,49 +1,94 @@
 {
   "products": [
     {
-      "title": "van peace",
-      "desc": "manga",
-      "author": "mang",
-      "price": "44",
+      "title": "One Piece - Digital Colored Comics",
+      "desc": "It revolves around a crew of pirates led by captain Monkey D. Luffy, whose dream is to obtain the ultimate treasure One Piece ",
+      "author": "Eiichiro Oda",
+      "price": "12",
       "url": "https://staticlib.me/uploads/cover/one-piece-digital-colored-comics/cover/4afkvwegWz5n_250x350.jpg",
-      "genre": "senan",
+      "genre": "Shonen",
       "id": 1
     },
     {
-      "title": "sdf",
-      "desc": "sdf",
-      "author": "sdf",
-      "price": "sfdsf",
-      "url": "https://staticlib.me/uploads/cover/one-piece-digital-colored-comics/cover/4afkvwegWz5n_250x350.jpg",
-      "genre": "sdf",
+      "title": "Tales Of Demons And Gods",
+      "desc": "Nie Li, one of the strongest Demon Spiritist in his past life standing at the pinnacle of the martial world",
+      "author": "Mad Snail",
+      "price": "21",
+      "url": "https://staticlib.me/uploads/cover/yaoshenji/cover/Rmsr72toy8Cx_250x350.jpg",
+      "genre": " Drama",
       "id": 2
     },
     {
-      "title": "sdf",
-      "desc": "sdf",
-      "author": "df",
-      "price": "sdfs",
-      "url": "https://staticlib.me/uploads/cover/one-piece-digital-colored-comics/cover/4afkvwegWz5n_250x350.jpg",
-      "genre": "sdf",
+      "title": "Re:Monster",
+      "desc": "After his unfortunate death, Tomokui Kanata has been reincarnated as a member of the weakest race",
+      "author": "\tKanekiru Kogitsune",
+      "price": "12",
+      "url": "https://staticlib.me/uploads/cover/remonster/cover/lIDZYqcAm8aH_250x350.jpg",
+      "genre": " Fantasy",
       "id": 3
     },
     {
-      "title": "dfg",
-      "desc": "fg",
-      "author": "dfgd",
-      "price": "dfg",
-      "url": "https://staticlib.me/uploads/cover/one-piece-digital-colored-comics/cover/4afkvwegWz5n_250x350.jpg",
-      "genre": "dfg",
+      "title": "Death Note: Tokubetsu Yomikiri",
+      "desc": "The storyline follows a high school student who falls upon a supernatural laptop",
+      "author": "OHBA Tsugumi",
+      "price": "14.5",
+      "url": "https://staticlib.me/uploads/cover/death-note-2020/cover/oTSPIkNirmyJ_250x350.jpg",
+      "genre": " Horror",
       "id": 4
     },
     {
-      "title": "dfgdfg",
-      "desc": "dfgdfg",
-      "author": "dfg",
-      "price": "dfg",
-      "url": "https://staticlib.me/uploads/cover/one-piece-digital-colored-comics/cover/4afkvwegWz5n_250x350.jpg",
-      "genre": "dfgdgf",
+      "title": "Kimetsu no Yaiba",
+      "desc": "anjiro is the oldest son in his family who has lost his father.",
+      "author": "Ohba Tsugumi",
+      "price": "34",
+      "url": "https://staticlib.me/uploads/cover/kimetsu-no-yaiba-colored/cover/iA1tKX8kfYjG_250x350.jpg",
+      "genre": "Fantasy",
       "id": 5
+    },
+    {
+      "title": "Solo Leveling",
+      "desc": "10 years ago, after “the Gate” that connected the real world with the monster world opened, some of the ordinary",
+      "author": "Sung-Lak Jang",
+      "price": "25.6",
+      "url": "https://avt.mkklcdnv6temp.com/30/a/17-1583496340.jpg",
+      "genre": "Action",
+      "id": 6
+    },
+    {
+      "title": "Legend Of The Northern Blade",
+      "desc": "When the world was plunged into darkness martial artists gathered to form the ‘Northern Heavenly Sect’",
+      "author": "Hae-Min",
+      "price": "17.8",
+      "url": "https://avt.mkklcdnv6temp.com/26/q/21-1592020285.jpg",
+      "genre": " Martial arts",
+      "id": 7
+    },
+    {
+      "title": "Rebirth Of A Pampered Wife",
+      "desc": "Mo Shiyi's dreamed to marry a tall, rich, and handsome man and strived to reach the top in life.",
+      "author": "Ake Culture",
+      "price": "44",
+      "url": "https://avt.mkklcdnv6temp.com/43/j/24-1633331826.jpg",
+      "genre": "Romance",
+      "id": 8
+    },
+    {
+      "title": "Son-In-Law Above Them All",
+      "desc": "Qin Li, whose parents have disappeared, has been practicing silently for ten years after receiving the secret exercises",
+      "author": " Updating",
+      "price": "19.99",
+      "url": "https://avt.mkklcdnv6temp.com/41/v/22-1607099073.jpg",
+      "genre": "Romance",
+      "id": 9
+    },
+    {
+      "title": "dfgdfgdd",
+      "desc": "fgdfg",
+      "author": "dfgdfg",
+      "price": "123",
+      "url": "dfgdfg",
+      "genre": "dfgdf",
+      "id": 10
     }
   ]
 }
