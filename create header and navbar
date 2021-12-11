@@ -1,0 +1,75 @@
+[33mcommit 5c0f7e30800f47692ef098516b0e2fa11d5279f2[m[33m ([m[1;36mHEAD -> [m[1;32merbol[m[33m, [m[1;31morigin/erbol[m[33m)[m
+Merge: 56f340b 029d845
+Author: Tynaliever <tynaliev13th@gmail.com>
+Date:   Sat Dec 11 23:43:38 2021 +0600
+
+    Update header and navbar
+
+[33mcommit 56f340bd145014745b2dbd135bba1c80f49c435c[m
+Author: Tynaliever <tynaliev13th@gmail.com>
+Date:   Sat Dec 11 18:54:29 2021 +0600
+
+    create Navbar
+
+[33mcommit 029d845c3f05ec4d800bff50ffa5daceac1ebb42[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 253b60c 913d964
+Author: bahtiyar-85 <92923440+bahtiyar-85@users.noreply.github.com>
+Date:   Sat Dec 11 18:45:45 2021 +0600
+
+    Merge pull request #3 from bahtiyar-85/bahtiyar
+    
+    Bahtiyar
+
+[33mcommit 913d96476d3d6558c41ae9c726127cb7ee0acfa2[m
+Author: bahtiyar-85 <b.ilyazov@gmail.com>
+Date:   Sat Dec 11 18:43:24 2021 +0600
+
+    crud create
+
+[33mcommit e33aa8b6e6cc959371777fd05102ad1fd8fe9d88[m
+Author: bahtiyar-85 <b.ilyazov@gmail.com>
+Date:   Sat Dec 11 12:16:20 2021 +0600
+
+    create context
+
+[33mcommit 253b60cc133c3a29f20f8fa627a48e876e466674[m
+Merge: 86c916e 234ee05
+Author: bahtiyar-85 <92923440+bahtiyar-85@users.noreply.github.com>
+Date:   Fri Dec 10 16:22:06 2021 +0600
+
+    Merge pull request #2 from bahtiyar-85/bahtiyar
+    
+    create footer
+
+[33mcommit 234ee057b7a8b5f9daf5dc10883a743543fae0df[m
+Author: bahtiyar-85 <b.ilyazov@gmail.com>
+Date:   Fri Dec 10 16:21:16 2021 +0600
+
+    create footer
+
+[33mcommit 86c916e29bc40f95e0586738a5673f09de38c2d9[m
+Merge: 59a2a2b 553bdba
+Author: Tynaliever <92926349+Tynaliever@users.noreply.github.com>
+Date:   Fri Dec 10 16:19:52 2021 +0600
+
+    Merge pull request #1 from bahtiyar-85/erbol
+    
+    create header
+
+[33mcommit 553bdbad8d976a6983ba3c5c93271347b1667d42[m
+Author: Tynaliever <tynaliev13th@gmail.com>
+Date:   Fri Dec 10 16:19:19 2021 +0600
+
+    create header
+
+[33mcommit 59a2a2b9527a5a60cd9dffd4b2cdf7b36e6f3142[m[33m ([m[1;32mmaster[m[33m)[m
+Author: bahtiyar-85 <b.ilyazov@gmail.com>
+Date:   Fri Dec 10 16:12:41 2021 +0600
+
+    first-commit
+
+[33mcommit 76a3544568e456df330649ba7fcbaaa0f5d65363[m
+Author: bahtiyar-85 <b.ilyazov@gmail.com>
+Date:   Fri Dec 10 15:19:41 2021 +0600
+
+    Initialize project using Create React App

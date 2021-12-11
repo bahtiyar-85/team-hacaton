@@ -21,7 +21,7 @@ const AdminCard = ({item, productToEdit}) => {
     const { deleteProduct} = useContext(productsContext);
 
     return (
-        <Paper sx={{ p: 2, margin: 2, maxWidth: 500, flexGrow: 1, width:'45%' }}>
+        <Paper sx={{ p: 2, margin: 2, maxWidth: 500, flexGrow: 1, width:'45%', position:'relative' }}>
         <Grid container spacing={2}>
           <Grid item>
               <Img alt="complex" src={item.url} />
@@ -43,7 +43,7 @@ const AdminCard = ({item, productToEdit}) => {
                 </Typography>
               </Grid>
               <Grid item>
-                <Typography sx={{display:'flex' ,justifyContent:'flex-end' }} variant="body2">
+                <Typography sx={{display:'flex' ,justifyContent:'flex-end', position:'absolute', right:'0', bottom:'0', margin:1 }} variant="body2">
                 <EditRoundedIcon onClick={()=>productToEdit(item)} sx={{ cursor: 'pointer'}} color="action" fontSize='large'/>
                 <DeleteForeverRoundedIcon onClick={()=> deleteProduct(item.id)} sx={{ cursor: 'pointer'}} color="action" fontSize='large'/>
                 </Typography>

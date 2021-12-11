@@ -1,0 +1,14 @@
+.background-video {
+    position: relative;
+    color: #fff;
+    box-sizing: border-box;
+    font-family: "Radiance", "Noto Sans", sans-serif;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 2;
+  }
+
+  
