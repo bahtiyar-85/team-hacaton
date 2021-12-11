@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import ButtonBase from '@mui/material/ButtonBase';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import './AdminCard.css'
+import { productsContext } from '../../contexts/productsContext';
 
 const Img = styled('img')({
     margin: 'auto',
@@ -14,7 +16,9 @@ const Img = styled('img')({
     width: 100,
     height: 150
   });
-const AdminCard = ({item}) => {
+const AdminCard = ({item, productToEdit}) => {
+
+    const { deleteProduct} = useContext(productsContext);
 
     return (
         <Paper sx={{ p: 2, margin: 2, maxWidth: 500, flexGrow: 1, width:'45%' }}>
@@ -25,19 +29,23 @@ const AdminCard = ({item}) => {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" component="div">
+                <Typography gutterBottom variant="h5" component="div">
                  {item.title}
                 </Typography>
-                <Typography variant="body2" gutterBottom>
+                <Typography variant="body2" color="text.secondary">
                  {item.desc}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {item.author}
+                  {"Author(s): " + item.author}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {"Genre: "+item.genre}
                 </Typography>
               </Grid>
               <Grid item>
-                <Typography sx={{ cursor: 'pointer' }} variant="body2">
-                  Remove
+                <Typography sx={{display:'flex' ,justifyContent:'flex-end' }} variant="body2">
+                <EditRoundedIcon onClick={()=>productToEdit(item)} sx={{ cursor: 'pointer'}} color="action" fontSize='large'/>
+                <DeleteForeverRoundedIcon onClick={()=> deleteProduct(item.id)} sx={{ cursor: 'pointer'}} color="action" fontSize='large'/>
                 </Typography>
               </Grid>
             </Grid>
