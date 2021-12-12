@@ -138,23 +138,23 @@ const AdminPage = () => {
         
         <Container>
         
-            <Button variant="contained" onClick={() => setShowInput(!showInput)} >Add</Button>
+            <Button color='secondary' style={{marginTop: "80px", marginLeft: "15px", width: "10%"}} variant="contained" onClick={() => setShowInput(!showInput)} >Add</Button>
             {showInput ? (
                 <Box
                     component="form"
                     sx={{
-                        '& > :not(style)': { m: 1, width: '50ch', display:'flex', flexDirection:'column' },
+                        '& > :not(style)': { m: 1.5, width: '50ch', display:'flex', flexDirection:'column' },
                     }}
                     noValidate
                     autoComplete="off"
                     >
-                    <TextField onChange={(e) => setTitle(e.target.value)} id="input-add-1" label="Title" variant="outlined" value={title}/>
-                    <TextField onChange={(e) => setDesc(e.target.value)} id="input-add-2" label="Description" variant="outlined" value={desc}/>
-                    <TextField onChange={(e) => setAuthor(e.target.value)} id="input-add-3" label="Author" variant="outlined" value={author} />
-                    <TextField onChange={(e) => setPrice(e.target.value)} id="input-add-4"  type="number" label="Price" variant="outlined" value={price}/>
-                    <TextField onChange={(e) => setUrl(e.target.value)} id="input-add-5" label="URL" variant="outlined" value={url} />
-                    <TextField onChange={(e) => setGenre(e.target.value)} id="input-add-6" label="Genre" variant="outlined" value={genre} />
-                    <Button onClick={handleValues} variant="contained" >Create </Button>
+                    <TextField style={{backgroundColor: "#ffffff", borderRadius: "5px"}} color="secondary" onChange={(e) => setTitle(e.target.value)} id="input-add-1" label="Title" variant="outlined" value={title}/>
+                    <TextField style={{backgroundColor: "#ffffff", borderRadius: "5px"}} color="secondary" onChange={(e) => setDesc(e.target.value)} id="input-add-2" label="Description" variant="outlined" value={desc}/>
+                    <TextField style={{backgroundColor: "#ffffff", borderRadius: "5px"}} color="secondary" onChange={(e) => setAuthor(e.target.value)} id="input-add-3" label="Author" variant="outlined" value={author} />
+                    <TextField style={{backgroundColor: "#ffffff", borderRadius: "5px"}} color="secondary" onChange={(e) => setPrice(e.target.value)} id="input-add-4"  type="number" label="Price" variant="outlined" value={price}/>
+                    <TextField style={{backgroundColor: "#ffffff", borderRadius: "5px"}} color="secondary" onChange={(e) => setUrl(e.target.value)} id="input-add-5" label="URL" variant="outlined" value={url} />
+                    <TextField style={{backgroundColor: "#ffffff", borderRadius: "5px"}} color="secondary" onChange={(e) => setGenre(e.target.value)} id="input-add-6" label="Genre" variant="outlined" value={genre} />
+                    <Button style={{width: "35%", height: "45px"}} onClick={handleValues} variant="contained" color='secondary' >Create </Button>
                 </Box>
                 
             ) : (null)
