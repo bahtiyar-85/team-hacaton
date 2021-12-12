@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button, Container, TextField } from '@mui/material';
+import { Button, Container, Pagination, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useSearchParams } from 'react-router-dom';
 
 import { productsContext } from '../../contexts/productsContext';
 import AdminCard from '../AdminCard/AdminCard';
@@ -11,7 +12,7 @@ import AdminCard from '../AdminCard/AdminCard';
 const AdminPage = () => {
    
     const [showInput, setShowInput] = useState(false);
-    const { createProduct, products, getProducts, updateProducts } = useContext(productsContext);
+    const { createProduct, products, getProducts, updateProducts, productsTotalCount } = useContext(productsContext);
 
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
@@ -21,7 +22,35 @@ const AdminPage = () => {
     const [genre, setGenre] = useState('');
     const [id, setId] = useState('')
   
+    // pagination 
+    const [searchParams, setSearchParams] = useSearchParams();
+    // const [search, setSearch] = useState(
+    //   searchParams.get("q") ? searchParams.get("q") : ""
+    // );
+    // const [page, setPage] = useState(
+    //   searchParams.get("_page") ? searchParams.get("_page") : +1
+    // );
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(4);
+     
+    useEffect(() => {
+        setSearchParams({
+          _page: page,
+          _limit: limit,
+        });
+      }, []);
 
+    useEffect(() => {
+        getProducts();
+      }, [searchParams]);
+
+    useEffect(() => {
+        setSearchParams({
+          _page: page,
+          _limit: limit,
+        });
+      }, [ page, limit]);
+    // end pagination 
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -98,8 +127,13 @@ const AdminPage = () => {
         cleanInput();
 
     }
-  
-    console.log('array',products);
+    
+    const handleChange = (event, value) => {
+        console.log('value',value);
+        console.log('page', page);
+        setPage(value);
+      };
+    // console.log('array',products);
     return (
         
         <Container>
@@ -129,6 +163,7 @@ const AdminPage = () => {
            {    
                products.map((item)=><AdminCard key={item.id} item={item} productToEdit={productToEdit}/>)
            }
+          
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Change form</DialogTitle>
                 <Box
@@ -151,6 +186,14 @@ const AdminPage = () => {
                 <Button onClick={handleClose}>Cancel</Button>
                 </DialogActions>
             </Dialog>
+            </div>
+            <div style={{display:'flex', justifyContent:'center'}}>
+                <Pagination 
+                    count={Math.ceil(productsTotalCount/limit)} 
+                    page={page}
+                    onChange={handleChange}
+                    color="primary" 
+                />
             </div>
         </Container>
         

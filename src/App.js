@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AdminPage from './components/AdminPage/AdminPage';
 import Header from './components/Header/Header';
 import ProductsContextProvider from './contexts/productsContext';
