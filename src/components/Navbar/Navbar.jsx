@@ -65,6 +65,7 @@ const Navbar = () => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const location = useLocation();
+    // console.log(location);
     const {
       handleLogout,
       user: { email },
@@ -109,6 +110,10 @@ const Navbar = () => {
         onClose={handleMenuClose}
       >
          {email === "tynaliev13th@gmail.com" ? (
+           location.pathname === '/admin' ? <Link
+           to='/'
+           style={{color: "black", textDecoration: "none"}}
+         ><MenuItem onClick={handleMenuClose}>Home</MenuItem></Link> :
           <Link
             to='/admin'
             style={{color: "black", textDecoration: "none"}}
