@@ -189,6 +189,7 @@ const AdminPage = () => {
             </div>
             <div style={{display:'flex', justifyContent:'center'}}>
                 <Pagination 
+                    style={{position: 'fixed', bottom: 0}}
                     count={Math.ceil(productsTotalCount/limit)} 
                     page={page}
                     onChange={handleChange}
