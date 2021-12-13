@@ -17,7 +17,9 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 import "./Navbar.css"
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../../contexts/authContext';
+import AdminPage from '../AdminPage/AdminPage';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -62,6 +64,11 @@ const Search = styled('div')(({ theme }) => ({
 const Navbar = () => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const location = useLocation();
+    const {
+      handleLogout,
+      user: { email },
+    } = useAuth();
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   
     const isMenuOpen = Boolean(anchorEl);
@@ -101,8 +108,20 @@ const Navbar = () => {
         open={isMenuOpen}
         onClose={handleMenuClose}
       >
-        <Link to="/admin" style={{color: "black", textDecoration: "none"}}><MenuItem onClick={handleMenuClose}>Admin</MenuItem></Link> 
-        <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+         {email === "tynaliev13th@gmail.com" ? (
+          <Link
+            to='/admin'
+            style={{color: "black", textDecoration: "none"}}
+          ><MenuItem onClick={handleMenuClose}>Admin</MenuItem></Link>
+          ) : null}
+        {email ? (
+            <Link to="/" style={{color: "black", textDecoration: "none"}}><MenuItem onClick={handleLogout}>Logout</MenuItem></Link>
+            ) : null}
+            {email ? null : (
+            <Link to="/auth" style={{color: "black", textDecoration: "none"}}>
+              <MenuItem onClick={handleMenuClose}>Sign in</MenuItem>
+            </Link>
+          )}
       </Menu>
     );
   
