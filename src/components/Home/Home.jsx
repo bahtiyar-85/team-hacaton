@@ -12,12 +12,14 @@ const Home = () => {
         getProducts()
     },[])
     return (
-        <div className='container background-video'>
+        <>
+            <div className="container">
             <video className="background-video" muted autoPlay preload="auto" loop >
                 {/* <source type="video/webm" src="https://thumbs.gfycat.com/MixedTartCalf-mobile.mp4"/> */}
                 <source type="video/mp4" src="https://giant.gfycat.com/ColorlessQuerulousDoe.mp4"/>
             </video>
-            <div style={{display:'flex', flexWrap:'wrap', justifyContent:'center'}}>
+            </div>
+            <div className='parallax' style={{display:'flex', flexWrap:'wrap', justifyContent:'center'}}>
                 {products.map((item)=>(
 
                   <Card key={item.id} sx={{ maxWidth: 345, margin:'2vh', position:'relative' }}>
@@ -53,7 +55,7 @@ const Home = () => {
                 ))}
               
             </div>
-        </div>
+        </>
     );
 };
 

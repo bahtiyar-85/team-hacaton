@@ -1,15 +1,30 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 755px;
+}
 .background-video {
     position: relative;
     color: #fff;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     font-family: "Radiance", "Noto Sans", sans-serif;
-    height: 755px;
     object-fit: cover;
     width: 100%;
-    top: 0;
-    left: 0;
-    opacity: 2;
-    height: 753px;
+    height: 755px;
+  }
+
+  .parallax {
+
+      background: url(https://wallpapercave.com/wp/wp7085179.jpg);
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat; /* Do not repeat the image */
+      background-size: cover;
+      height: auto;
+  
   }
 
   

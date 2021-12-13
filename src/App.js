@@ -14,7 +14,7 @@ import Auth from './components/Auth/Auth';
 const App = () => {
   return (
     <AuthContextProvider>
-    <div className='container'>
+    <div>
       <ProductsContextProvider>
         <BrowserRouter>
           <Header/>
