@@ -10,6 +10,7 @@ import Home from './components/Home/Home';
 import AuthContextProvider from './contexts/authContext';
 import Auth from './components/Auth/Auth';
 
+
 const App = () => {
   return (
     <AuthContextProvider>
