@@ -1,16 +1,53 @@
-import { InsertEmoticon } from '@mui/icons-material';
-import { Card, CardContent, CardMedia, Typography } from '@mui/material';
-import React, { useContext, useEffect } from 'react';
+import { Card, CardContent, CardMedia, Typography, Pagination } from '@mui/material';
+import React, { useContext, useEffect, useState } from 'react';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import './Home.css'
 import { productsContext } from '../../contexts/productsContext';
+import { useSearchParams } from 'react-router-dom';
 
 const Home = () => {
     const {products, getProducts} = useContext(productsContext);
     useEffect(()=>{
         getProducts()
-    },[])
+    }, [])
+
+    // pagination 
+    const { productsTotalCount } = useContext(productsContext);
+    const [searchParams, setSearchParams] = useSearchParams();
+    // const [search, setSearch] = useState(
+    //   searchParams.get("q") ? searchParams.get("q") : ""
+    // );
+    // const [page, setPage] = useState(
+    //   searchParams.get("_page") ? searchParams.get("_page") : +1
+    // );
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(8);
+     
+    useEffect(() => {
+        setSearchParams({
+          _page: page,
+          _limit: limit,
+        });
+      }, []);
+
+    useEffect(() => {
+        getProducts();
+      }, [searchParams]);
+
+    useEffect(() => {
+        setSearchParams({
+          _page: page,
+          _limit: limit,
+        });
+      }, [ page, limit]);
+    // end pagination 
+
+    const handleChange = (event, value) => {
+        // console.log('value',value);
+        // console.log('page', page);
+        setPage(value);
+      };
     return (
         <>
             <div className="container">
@@ -31,7 +68,7 @@ const Home = () => {
                             alt="image"
                         />
                         <CardContent>
-                            <Typography variant="h5" color="text.secondary">
+                            <Typography style={{marginTop: -15}} variant="h5" color="text.secondary">
                             {item.title}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
@@ -43,8 +80,8 @@ const Home = () => {
                             <Typography variant="body2" color="text.secondary">
                             {item.desc}
                             </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {"$ "+item.price}
+                            <Typography style={{position: 'absolute', bottom: 0, left: 10}} variant="body2" color="text.dark">
+                                <span style={{fontSize: '18px'}}>{"$ "+item.price}</span>
                             </Typography>  
                             <div style={{display:'flex' ,justifyContent:'flex-end', position:'absolute', right:'0', bottom:'0'}}>
                                 <AddShoppingCartIcon />
@@ -54,6 +91,15 @@ const Home = () => {
 
                 ))}
               
+            </div>
+            <div style={{display:'flex', justifyContent:'center'}}>
+                <Pagination 
+                    style={{position: 'fixed', bottom: 0}}
+                    count={Number(Math.ceil(+productsTotalCount/+limit))} 
+                    page={+page}
+                    onChange={handleChange}
+                    color="primary" 
+                />
             </div>
         </>
     );
