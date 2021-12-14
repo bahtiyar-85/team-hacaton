@@ -41,7 +41,7 @@ const AdminPage = () => {
           _limit: limit,
         });
       }, []);
-
+    console.log('searchParams', searchParams);
     useEffect(() => {
         getProducts();
       }, [searchParams]);
@@ -131,8 +131,6 @@ const AdminPage = () => {
     }
     
     const handleChange = (event, value) => {
-        // console.log('value',value);
-        // console.log('page', page);
         setPage(value);
       };
     // console.log('array',products);

@@ -1,13 +1,17 @@
-import { Card, CardContent, CardMedia, Typography, Pagination } from '@mui/material';
-import React, { useContext, useEffect, useState } from 'react';
+
+import { productsContext } from '../../contexts/productsContext';
+import { cartContext } from '../../contexts/cartContext';
+
+import { InsertEmoticon } from '@mui/icons-material';
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
+import React, { useContext, useEffect } from 'react';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import './Home.css'
-import { productsContext } from '../../contexts/productsContext';
-import { useSearchParams } from 'react-router-dom';
 
 const Home = () => {
     const {products, getProducts} = useContext(productsContext);
+    const {addProductToCart} = useContext(cartContext)
     useEffect(()=>{
         getProducts()
     }, [])
@@ -84,7 +88,7 @@ const Home = () => {
                                 <span style={{fontSize: '18px'}}>{"$ "+item.price}</span>
                             </Typography>  
                             <div style={{display:'flex' ,justifyContent:'flex-end', position:'absolute', right:'0', bottom:'0'}}>
-                                <AddShoppingCartIcon />
+                                <AddShoppingCartIcon onClick={()=>addProductToCart(item)} style={{cursor:'pointer'}}/>
                             </div>
                         </CardContent>
                     </Card>
