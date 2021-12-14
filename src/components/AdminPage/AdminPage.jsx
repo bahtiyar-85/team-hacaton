@@ -9,6 +9,8 @@ import { useSearchParams } from 'react-router-dom';
 import { productsContext } from '../../contexts/productsContext';
 import AdminCard from '../AdminCard/AdminCard';
 
+import './AdminPage.css'
+
 const AdminPage = () => {
    
     const [showInput, setShowInput] = useState(false);
@@ -90,7 +92,7 @@ const AdminPage = () => {
          }
         createProduct(product);
 
-        console.log('newProduct', product);
+        // console.log('newProduct', product);
         cleanInput();
 
     }
@@ -133,6 +135,7 @@ const AdminPage = () => {
       };
     // console.log('array',products);
     return (
+        <div className='adminpage'>
         
         <Container>
         
@@ -188,13 +191,14 @@ const AdminPage = () => {
             <div style={{display:'flex', justifyContent:'center'}}>
                 <Pagination 
                     style={{position: 'fixed', bottom: 0}}
-                    count={Math.ceil(productsTotalCount/limit)} 
-                    page={page}
+                    count={Number(Math.ceil(+productsTotalCount/+limit))} 
+                    page={+page}
                     onChange={handleChange}
                     color="primary" 
                 />
             </div>
         </Container>
+        </div>
         
         
         

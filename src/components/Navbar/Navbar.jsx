@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from 'react';
+
+import React, {useContext, useEffect, useState} from 'react';
 
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -17,7 +18,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 import "./Navbar.css"
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../contexts/authContext';
 import AdminPage from '../AdminPage/AdminPage';
 import { cartContext } from '../../contexts/cartContext';
@@ -63,13 +64,37 @@ const Search = styled('div')(({ theme }) => ({
   }));
 
 const Navbar = () => {
-
     const [anchorEl, setAnchorEl] = React.useState(null);
+
     const location = useLocation();
+    // console.log(location);
+
+    // const [getProducts] = useContext(productsContext)
+    // const [searchParams, setSearchParams] = useSearchParams();
+    // const [search, setSearch] = useState(
+    //   searchParams.get("q") ? searchParams.get("q") : ""
+    // );
+
+    // useEffect(() => {
+    //   setSearchParams({
+    //     q: search,
+    //   });
+    // }, []);
+
+    // useEffect(() => {
+    //   getProducts();
+    // }, [searchParams]);
+
+    // useEffect(() => {
+    //   setSearchParams({
+    //     q: search,
+    //   });
+    // }, [search]);
     const {
       handleLogout,
       user: { email },
     } = useAuth();
+    // console.log('search', search);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const { getCart, cartLength} = useContext(cartContext);
     useEffect(()=>{
@@ -114,6 +139,10 @@ const Navbar = () => {
         onClose={handleMenuClose}
       >
          {email === "tynaliev13th@gmail.com" ? (
+           location.pathname === '/admin' ? <Link
+           to='/'
+           style={{color: "black", textDecoration: "none"}}
+         ><MenuItem onClick={handleMenuClose}>Home</MenuItem></Link> :
           <Link
             to='/admin'
             style={{color: "black", textDecoration: "none"}}
