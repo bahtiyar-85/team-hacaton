@@ -3,30 +3,35 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import AdminPage from './components/AdminPage/AdminPage';
 import Header from './components/Header/Header';
 import ProductsContextProvider from './contexts/productsContext';
+import Cart from './components/Cart/Cart';
 import Footer from './components/Footer/Footer'
 
 import './App.css'
 import Home from './components/Home/Home';
 import AuthContextProvider from './contexts/authContext';
 import Auth from './components/Auth/Auth';
+import CartContextProvider from './contexts/cartContext';
 
 
 const App = () => {
   return (
     <AuthContextProvider>
-    <div className='container'>
-      <ProductsContextProvider>
-        <BrowserRouter>
-          <Header/>
-            <Routes>
-              <Route path='/' element={<Home/>}/>
-              <Route path='/admin' element={<AdminPage/>}/>
-              <Route path='/auth' element={<Auth/>}/>
-            </Routes>
-        </BrowserRouter>
-      </ProductsContextProvider>
+      <div className='container'>
+        <CartContextProvider>
+          <ProductsContextProvider>
+            <BrowserRouter>
+              <Header/>
+                <Routes>
+                  <Route path='/' element={<Home/>}/>
+                  <Route path='/admin' element={<AdminPage/>}/>
+                  <Route path='/auth' element={<Auth/>}/>
+                  <Route path='/cart' element={<Cart/>}/>
+                </Routes>
+            </BrowserRouter>
+          </ProductsContextProvider>
+        </CartContextProvider>
       </div>
-      </AuthContextProvider>
+    </AuthContextProvider>
   );
 };
 

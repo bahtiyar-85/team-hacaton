@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -20,6 +20,7 @@ import "./Navbar.css"
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/authContext';
 import AdminPage from '../AdminPage/AdminPage';
+import { cartContext } from '../../contexts/cartContext';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -70,6 +71,10 @@ const Navbar = () => {
       user: { email },
     } = useAuth();
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+    const { getCart, cartLength} = useContext(cartContext);
+    useEffect(()=>{
+      getCart()
+    },{})
   
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -143,11 +148,11 @@ const Navbar = () => {
         onClose={handleMobileMenuClose}
       >
         <MenuItem>
-          <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-            <Badge badgeContent={4} color="error">
-              <AddShoppingCartIcon />
-            </Badge>
-          </IconButton>
+            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                <Badge badgeContent={cartLength} color="error">
+                  <AddShoppingCartIcon />
+                </Badge>
+            </IconButton>
           <p>cart</p>
         </MenuItem>
         <MenuItem>
@@ -156,7 +161,7 @@ const Navbar = () => {
             aria-label="show 17 new FavoriteBorderIcon"
             color="inherit"
           >
-            <Badge badgeContent={17} color="error">
+            <Badge badgeContent={12} color="error">
               <FavoriteBorderIcon />
             </Badge>
           </IconButton>
@@ -200,9 +205,11 @@ const Navbar = () => {
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                <Badge badgeContent={4} color="error">
-                  <AddShoppingCartIcon />
-                </Badge>
+                <Link to="/cart">
+                  <Badge badgeContent={cartLength} color="error">
+                    <AddShoppingCartIcon />
+                  </Badge>
+                </Link>
               </IconButton>
               <IconButton
                 size="large"
