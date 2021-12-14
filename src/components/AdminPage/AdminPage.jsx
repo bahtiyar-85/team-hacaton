@@ -194,7 +194,7 @@ const AdminPage = () => {
                 <Pagination 
                     style={{position: 'fixed', bottom: 0}}
                     count={Number(Math.ceil(+productsTotalCount/+limit))} 
-                    page={page}
+                    page={+page}
                     onChange={handleChange}
                     color="primary" 
                 />
