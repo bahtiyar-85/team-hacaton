@@ -1,20 +1,18 @@
-
+import React, { useContext, useEffect, useState } from 'react';
 import { productsContext } from '../../contexts/productsContext';
 import { cartContext } from '../../contexts/cartContext';
 
 import { InsertEmoticon } from '@mui/icons-material';
 import { Card, CardContent, CardMedia, Pagination, Slider, Typography } from '@mui/material';
-import React, { useContext, useEffect, useState } from 'react';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useSearchParams } from 'react-router-dom';
 
 import './Home.css'
 import Box from '@mui/material/Box';
 
-
 const Home = () => {
     const {products, getProducts} = useContext(productsContext);
-    const {addProductToCart} = useContext(cartContext)
+    const {addProductToCart} = useContext(cartContext);
     useEffect(()=>{
         getProducts()
     }, [])
@@ -22,18 +20,17 @@ const Home = () => {
     // pagination 
     const { productsTotalCount } = useContext(productsContext);
     const [searchParams, setSearchParams] = useSearchParams();
-    // const [search, setSearch] = useState(
-    //   searchParams.get("q") ? searchParams.get("q") : ""
-    // );
-    // const [page, setPage] = useState(
-    //   searchParams.get("_page") ? searchParams.get("_page") : +1
-    // );
-    const [page, setPage] = useState(1);
-    const [limit, setLimit] = useState(8);
     const [valueSlider, setValueSlider] = useState([0, 1000]);
+ 
+    const [search, setSearch] = useState(
+        searchParams.get("q") ? searchParams.get("q") : ""
+      );
+    const [page, setPage] = useState(searchParams.get("_page") ? searchParams.get("_page") : 1);
+    const [limit, setLimit] = useState(searchParams.get("_limit") ? searchParams.get("_limit") : 8);
      
     useEffect(() => {
         setSearchParams({
+            q: search,
           _page: page,
           _limit: limit,
           price_gte: valueSlider[0],
@@ -47,17 +44,20 @@ const Home = () => {
 
     useEffect(() => {
         setSearchParams({
+            q: search,
           _page: page,
           _limit: limit,
           price_gte: valueSlider[0],
           price_lte: valueSlider[1],
         });
-      }, [ page, limit, valueSlider]);
+
+      }, [search, page, limit, valueSlider]);
     // end pagination 
     console.log('valueSlider', valueSlider);
     const handleChange = (event, value) => {
         setPage(value);
       };
+
     const handleChangeSlider = (event, newValue) => {
         setValueSlider(newValue);
         console.log('newValue', newValue);
@@ -66,11 +66,13 @@ const Home = () => {
     function valuetext(value) {
         return `$ ${value}`;
       }
+
+
+
     return (
         <>
             <div className="container">
             <video className="background-video" muted autoPlay preload="auto" loop >
-                {/* <source type="video/webm" src="https://thumbs.gfycat.com/MixedTartCalf-mobile.mp4"/> */}
                 <source type="video/mp4" src="https://giant.gfycat.com/ColorlessQuerulousDoe.mp4"/>
             </video>
             </div>

@@ -3,6 +3,8 @@
     min-height: 90vh;
     background: #e9e9e9;
     display: flex;
+    color: white;
+    font-size: 20px;
 
         background: url(https://images6.alphacoders.com/104/thumb-1920-1049843.png);
         background-attachment: fixed;
@@ -32,9 +34,10 @@
     padding: 15px 0;
     font-size: 16px;
     color: #fff;
-    background: #4a4a4a;
+    background: #640157;
     cursor: pointer;
     letter-spacing: 2px;
+    border-radius: 5px;
   }
   
   .auth-input {
@@ -44,6 +47,7 @@
     font-size: 19px;
     padding: 10px;
     letter-spacing: 2px;
+    border-radius: 5px;
   }
   
   .btn-container {
@@ -68,5 +72,19 @@
     cursor: pointer;
     margin-left: 5px;
     transition: all 400ms ease-in-out;
+  }
+
+  .google-btn{
+      border: none;
+      outline: none;
+      width: 100%;
+      padding: 15px 0;
+      font-size: 16px;
+      color: black;
+      background: yellow;
+      cursor: pointer;
+      letter-spacing: 2px;
+      border-radius: 5px;
+      opacity: .8;
   }
   

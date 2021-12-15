@@ -1,0 +1,31 @@
+/* * { 
+    border: 0.5px solid black; 
+} */ 
+ 
+ 
+.inputCard{ 
+    flex-direction: column; 
+    display: flex; 
+    /* justify-content: center; */ 
+    align-items: center; 
+    margin-top: 15px; 
+    
+     
+} 
+ 
+.button{ 
+    color: green; 
+}
+
+.container{
+    background: url(https://www.nawpic.com/media/2020/demon-slayer-desktop-nawpic.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 753px !important;
+}
+
+.form-control{
+    width: 200px;
+}
