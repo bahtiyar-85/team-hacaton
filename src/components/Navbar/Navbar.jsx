@@ -158,7 +158,7 @@ const Navbar = () => {
         open={isMenuOpen}
         onClose={handleMenuClose}
       >
-         {email === "tynaliev13th@gmail.com" ? (
+         {email === "tynaliev13th@gmail.com" || email === "b.ilyazov@gmail.com" ? (
            location.pathname === '/admin' ? <Link
            to='/'
            style={{color: "black", textDecoration: "none"}}
@@ -257,11 +257,19 @@ const Navbar = () => {
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                <Link to="/cart">
+                {email ? (
+                  <Link to="/cart">
+                    <Badge badgeContent={cartLength} color="error">
+                      <AddShoppingCartIcon />
+                    </Badge>
+                  </Link>
+                ) : (
+                <Link to="/auth" >
                   <Badge badgeContent={cartLength} color="error">
                     <AddShoppingCartIcon />
                   </Badge>
                 </Link>
+                )}
               </IconButton>
               <IconButton
                 size="large"
