@@ -3,11 +3,14 @@ import { productsContext } from '../../contexts/productsContext';
 import { cartContext } from '../../contexts/cartContext';
 
 import { InsertEmoticon } from '@mui/icons-material';
-import { Card, CardContent, CardMedia, Typography } from '@mui/material';
-import React, { useContext, useEffect } from 'react';
+import { Card, CardContent, CardMedia, Pagination, Slider, Typography } from '@mui/material';
+import React, { useContext, useEffect, useState } from 'react';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { useSearchParams } from 'react-router-dom';
 
 import './Home.css'
+import Box from '@mui/material/Box';
+
 
 const Home = () => {
     const {products, getProducts} = useContext(productsContext);
@@ -27,11 +30,14 @@ const Home = () => {
     // );
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(8);
+    const [valueSlider, setValueSlider] = useState([0, 1000]);
      
     useEffect(() => {
         setSearchParams({
           _page: page,
           _limit: limit,
+          price_gte: valueSlider[0],
+          price_lte: valueSlider[1],
         });
       }, []);
 
@@ -43,15 +49,23 @@ const Home = () => {
         setSearchParams({
           _page: page,
           _limit: limit,
+          price_gte: valueSlider[0],
+          price_lte: valueSlider[1],
         });
-      }, [ page, limit]);
+      }, [ page, limit, valueSlider]);
     // end pagination 
-
+    console.log('valueSlider', valueSlider);
     const handleChange = (event, value) => {
-        // console.log('value',value);
-        // console.log('page', page);
         setPage(value);
       };
+    const handleChangeSlider = (event, newValue) => {
+        setValueSlider(newValue);
+        console.log('newValue', newValue);
+    };
+
+    function valuetext(value) {
+        return `$ ${value}`;
+      }
     return (
         <>
             <div className="container">
@@ -61,6 +75,17 @@ const Home = () => {
             </video>
             </div>
             <div className='parallax' style={{display:'flex', flexWrap:'wrap', justifyContent:'center'}}>
+            <div style={{width:'80%', display:'flex', flexDirection:'row', justifyContent:"center", alignItems:'center'}}>
+                <h2 style={{ color:'white'}}>Filter by price</h2>
+                <Box sx={{ width: 500, margin:'0 auto' }}>
+                    <Slider
+                        value={valueSlider}
+                        onChange={handleChangeSlider}
+                        valueLabelDisplay="auto"
+                        getAriaValueText={valuetext}
+                    />
+                </Box>
+            </div>
                 {products.map((item)=>(
 
                   <Card key={item.id} sx={{ maxWidth: 345, margin:'2vh', position:'relative' }}>

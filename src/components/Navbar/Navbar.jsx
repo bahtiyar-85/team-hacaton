@@ -97,9 +97,10 @@ const Navbar = () => {
     // console.log('search', search);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const { getCart, cartLength} = useContext(cartContext);
+    
     useEffect(()=>{
       getCart()
-    },{})
+    },[])
   
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
