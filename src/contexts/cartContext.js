@@ -22,8 +22,8 @@ const reducer = (state = INIT_STATE, action) => {
   const CartContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-    function addProductToCart(product) {
-        let cart = JSON.parse(localStorage.getItem("cart"));
+    async function addProductToCart(product) {
+         let cart = await JSON.parse(localStorage.getItem("cart"));
         if (!cart) {
           cart = {
             products: [],
@@ -50,8 +50,8 @@ const reducer = (state = INIT_STATE, action) => {
         getCart()
     }
 
-    function getCart() {
-        let cart = JSON.parse(localStorage.getItem("cart"));
+    async function getCart() {
+        let cart = await JSON.parse(localStorage.getItem("cart"));
         if (!cart) {
           cart = {
             products: [],
@@ -65,8 +65,8 @@ const reducer = (state = INIT_STATE, action) => {
         });
     }
 
-    function deleteFromCart(id) {
-        let cart = JSON.parse(localStorage.getItem("cart"));
+    async function deleteFromCart(id) {
+        let cart = await JSON.parse(localStorage.getItem("cart"));
         if (!cart) {
           cart = {
             products: [],
@@ -78,8 +78,8 @@ const reducer = (state = INIT_STATE, action) => {
         getCart();
       }
 
-    function checkItemInCart(id) {
-        let cart = JSON.parse(localStorage.getItem("cart"));
+    async function checkItemInCart(id) {
+        let cart = await JSON.parse(localStorage.getItem("cart"));
         if (!cart) {
             cart = {
             products: [],

@@ -7,6 +7,11 @@ import React, { useContext, useEffect } from 'react';
 import { cartContext } from '../../contexts/cartContext';
 import { roundN } from "../../helpers/calcPrice";
 
+
+import './Cart.css'
+import { Link } from 'react-router-dom';
+
+
 const Cart = () => {
     const {getCart, cart, deleteFromCart, changeProductCount} = useContext(cartContext)
     
@@ -16,7 +21,7 @@ const Cart = () => {
 
 
     return (
-        <div style={{color:'white', padding:'100px'}}>
+        <div className='cartpage' style={{color:'white', paddingTop:'180px'}}>
            
            <Container>
              {cart.products?.map((item)=>(
@@ -48,7 +53,7 @@ const Cart = () => {
                         <h2>{"$" + roundN(item.subPrice)}</h2>
                         </Grid>
                         <Grid item xs={1}>
-                        <DeleteForeverRoundedIcon onClick={()=>deleteFromCart(item.item.id)} style={{cursor:'pointer'}}/>
+                        <DeleteForeverRoundedIcon onClick={()=>deleteFromCart(item.item.id)} style={{cursor:'pointer', color: 'red'}}/>
                         </Grid>
                 </Grid>
              ))}  
@@ -63,7 +68,7 @@ const Cart = () => {
                     justifyContent="flex-end"
                     alignItems="flex-end"
                 >
-                    <Button variant="contained" color="success">Next</Button>
+                    <Link to='/credit'><Button variant="contained" color="success">Next</Button></Link>
                 </Grid>
                 
            </Container>

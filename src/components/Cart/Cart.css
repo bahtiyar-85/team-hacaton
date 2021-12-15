@@ -1,0 +1,8 @@
+.cartpage{
+    background: url(https://www.nawpic.com/media/2020/demon-slayer-desktop-nawpic.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    height: 753px;
+}
