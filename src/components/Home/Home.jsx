@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { productsContext } from '../../contexts/productsContext';
 import { cartContext } from '../../contexts/cartContext';
-import { Card, CardContent, CardMedia, Pagination, Typography } from '@mui/material';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-import './Home.css'
+import { InsertEmoticon } from '@mui/icons-material';
+import { Card, CardContent, CardMedia, Pagination, Slider, Typography } from '@mui/material';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useSearchParams } from 'react-router-dom';
 
-
-
+import './Home.css'
+import Box from '@mui/material/Box';
 
 const Home = () => {
     const {products, getProducts} = useContext(productsContext);
@@ -19,8 +19,9 @@ const Home = () => {
 
     // pagination 
     const { productsTotalCount } = useContext(productsContext);
-
-    const [searchParams, setSearchParams] = useSearchParams(); 
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [valueSlider, setValueSlider] = useState([0, 1000]);
+ 
     const [search, setSearch] = useState(
         searchParams.get("q") ? searchParams.get("q") : ""
       );
@@ -32,6 +33,8 @@ const Home = () => {
             q: search,
           _page: page,
           _limit: limit,
+          price_gte: valueSlider[0],
+          price_lte: valueSlider[1],
         });
       }, []);
 
@@ -44,13 +47,27 @@ const Home = () => {
             q: search,
           _page: page,
           _limit: limit,
+          price_gte: valueSlider[0],
+          price_lte: valueSlider[1],
         });
-      }, [search, page, limit]);
-    // end pagination 
 
+      }, [search, page, limit, valueSlider]);
+    // end pagination 
+    console.log('valueSlider', valueSlider);
     const handleChange = (event, value) => {
         setPage(value);
       };
+
+    const handleChangeSlider = (event, newValue) => {
+        setValueSlider(newValue);
+        console.log('newValue', newValue);
+    };
+
+    function valuetext(value) {
+        return `$ ${value}`;
+      }
+
+
 
     return (
         <>
@@ -60,6 +77,17 @@ const Home = () => {
             </video>
             </div>
             <div className='parallax' style={{display:'flex', flexWrap:'wrap', justifyContent:'center'}}>
+            <div style={{width:'80%', display:'flex', flexDirection:'row', justifyContent:"center", alignItems:'center'}}>
+                <h2 style={{ color:'white'}}>Filter by price</h2>
+                <Box sx={{ width: 500, margin:'0 auto' }}>
+                    <Slider
+                        value={valueSlider}
+                        onChange={handleChangeSlider}
+                        valueLabelDisplay="auto"
+                        getAriaValueText={valuetext}
+                    />
+                </Box>
+            </div>
                 {products.map((item)=>(
 
                   <Card key={item.id} sx={{ maxWidth: 345, margin:'2vh', position:'relative' }}>

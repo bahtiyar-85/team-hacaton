@@ -116,6 +116,7 @@ const Navbar = () => {
     } = useAuth();
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const { getCart, cartLength} = useContext(cartContext);
+    
     useEffect(()=>{
       getCart()
     },[])
