@@ -8,13 +8,14 @@ import Footer from './components/Footer/Footer'
 
 import './App.css'
 import Home from './components/Home/Home';
-import AuthContextProvider from './contexts/authContext';
+import AuthContextProvider, { useAuth } from './contexts/authContext';
 import Auth from './components/Auth/Auth';
 import CartContextProvider from './contexts/cartContext';
 import ReactCreditCard from 'react-credit-cards';
 import CreditCard from '../src/components/CreditCard/CreditCard';
 import CreditApp from '../src/components/CreditCard/CreditApp';
 import Price from './components/Price/Price';
+
 
 
 
