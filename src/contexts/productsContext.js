@@ -32,7 +32,7 @@ const ProductsContextProvider =({children}) => {
         // console.log("getProducts result", result);
         dispatch({
             type: CASE_GET_PRODUCTS,
-            payload: result
+            payload: result,
         })
     }
 
@@ -60,7 +60,8 @@ const ProductsContextProvider =({children}) => {
                 createProduct,
                 deleteProduct,
                 updateProducts,
-            }}>
+            }}
+            >
             {children}
         </productsContext.Provider>
     )

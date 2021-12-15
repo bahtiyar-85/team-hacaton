@@ -2,6 +2,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 
 import { styled, alpha } from '@mui/material/styles';
+import SearchIcon from '@mui/icons-material/Search';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,7 +12,6 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -20,15 +20,17 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import "./Navbar.css"
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../contexts/authContext';
-import AdminPage from '../AdminPage/AdminPage';
 import { cartContext } from '../../contexts/cartContext';
+import { productsContext } from '../../contexts/productsContext';
+
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.3),
     '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.4),
+      backgroundColor: alpha(theme.palette.common.white, 0.7),
+      width: '70%'
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
@@ -53,7 +55,6 @@ const Search = styled('div')(({ theme }) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
       padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create('width'),
       width: '100%',
@@ -64,42 +65,60 @@ const Search = styled('div')(({ theme }) => ({
   }));
 
 const Navbar = () => {
+  // search
+
+  const {products, getProducts} = useContext(productsContext);
+  const {addProductToCart} = useContext(cartContext);
+  useEffect(()=>{
+      getProducts()
+  }, [])
+
+  // pagination 
+  const { productsTotalCount } = useContext(productsContext);
+
+  const [searchParams, setSearchParams] = useSearchParams(); 
+  const [search, setSearch] = useState(
+      searchParams.get("q") ? searchParams.get("q") : ""
+    );
+  const [page, setPage] = useState(searchParams.get("_page") ? searchParams.get("_page") : 1);
+  const [limit, setLimit] = useState(searchParams.get("_limit") ? searchParams.get("_limit") : 8);
+   
+  useEffect(() => {
+      setSearchParams({
+          q: search,
+        _page: page,
+        _limit: limit,
+      });
+    }, []);
+
+  useEffect(() => {
+      getProducts();
+    }, [searchParams]);
+
+  useEffect(() => {
+      setSearchParams({
+          q: search,
+        _page: page,
+        _limit: limit,
+      });
+    }, [search, page, limit]);
+  // end pagination 
+
+
+
+  // end search
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const location = useLocation();
-    // console.log(location);
-
-    // const [getProducts] = useContext(productsContext)
-    // const [searchParams, setSearchParams] = useSearchParams();
-    // const [search, setSearch] = useState(
-    //   searchParams.get("q") ? searchParams.get("q") : ""
-    // );
-
-    // useEffect(() => {
-    //   setSearchParams({
-    //     q: search,
-    //   });
-    // }, []);
-
-    // useEffect(() => {
-    //   getProducts();
-    // }, [searchParams]);
-
-    // useEffect(() => {
-    //   setSearchParams({
-    //     q: search,
-    //   });
-    // }, [search]);
     const {
       handleLogout,
       user: { email },
     } = useAuth();
-    // console.log('search', search);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const { getCart, cartLength} = useContext(cartContext);
     useEffect(()=>{
       getCart()
-    },{})
+    },[])
   
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -210,6 +229,7 @@ const Navbar = () => {
         </MenuItem>
       </Menu>
     );
+
     return (
         <Box sx={{ flexGrow: 1 }}>
         <AppBar className="appbar" position="fixed" box-shadow="none" top="0" left="0" right="0" height="8vh" background-color="rgba(0,0,0,0)">
@@ -227,6 +247,8 @@ const Navbar = () => {
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search…"
                 inputProps={{ 'aria-label': 'search' }}
               />

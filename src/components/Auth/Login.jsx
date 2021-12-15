@@ -20,7 +20,7 @@ const Login = () => {
     <>
       <section className="login">
         <div className="login-container">
-          <label className="auth-label">Email</label>
+          {/* <label className="auth-label">Email</label> */}
           <input
             className="auth-input"
             type="text"
@@ -30,10 +30,11 @@ const Login = () => {
             onChange={(e) => {
               setEmail(e.target.value);
             }}
+            placeholder="Email"
           />
           <p className="error-msg">{emailError}</p>
 
-          <label className="auth-label">Password</label>
+          {/* <label className="auth-label">Password</label> */}
           <input
             className="auth-input"
             type="password"
@@ -43,6 +44,7 @@ const Login = () => {
             onChange={(e) => {
               setPassword(e.target.value);
             }}
+            placeholder="Password"
           />
           <p className="error-msg">{passwordError}</p>
 
@@ -79,7 +81,7 @@ const Login = () => {
               </>
             )}
           </div>
-          <button onClick={authWithGoogle}>google</button>
+          <button className="google-btn" onClick={authWithGoogle}>Google</button>
         </div>
       </section>
     </>

@@ -11,6 +11,12 @@ import Home from './components/Home/Home';
 import AuthContextProvider from './contexts/authContext';
 import Auth from './components/Auth/Auth';
 import CartContextProvider from './contexts/cartContext';
+import ReactCreditCard from 'react-credit-cards';
+import CreditCard from '../src/components/CreditCard/CreditCard';
+import CreditApp from '../src/components/CreditCard/CreditApp';
+import Price from './components/Price/Price';
+
+
 
 
 const App = () => {
@@ -26,6 +32,8 @@ const App = () => {
                   <Route path='/admin' element={<AdminPage/>}/>
                   <Route path='/auth' element={<Auth/>}/>
                   <Route path='/cart' element={<Cart/>}/>
+                  <Route path='/credit' element={<CreditApp/>}/>
+                  <Route path='/price' element={<Price/>}/>
                 </Routes>
             </BrowserRouter>
           </ProductsContextProvider>
