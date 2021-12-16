@@ -15,7 +15,7 @@
 //     console.log('Server is running');
 // })
 
-const jsonServer = require("json-server");
+const jsonServer = Require("json-server");
 const server = jsonServer.create();
 const router = jsonServer.router("./db.json");
 const middlewares = jsonServer.defaults({
