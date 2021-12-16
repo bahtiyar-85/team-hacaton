@@ -1,16 +1,34 @@
-const { SevenMpRounded } = require('@mui/icons-material');
-const jsonServer = require('json-server');
+// const { SevenMpRounded } = require('@mui/icons-material');
+// const jsonServer = require('json-server');
+// const server = jsonServer.create();
+// const router = jsonServer.router('./public/db.json');
+// const middlewares = jsonServer.defaults({
+//     static: './build',
+// });
+
+// const PORT = process.env.PORT || 3001;
+
+// server.use(middlewares);
+// server.use(router);
+
+// server.listen(PORT, () => {
+//     console.log('Server is running');
+// })
+
+const jsonServer = require("json-server");
 const server = jsonServer.create();
-const router = jsonServer.router('./public/db.json');
+const router = jsonServer.router("./db.json");
 const middlewares = jsonServer.defaults({
-    static: './build',
+  static: "./build",
 });
-
-const PORT = process.env.PORT || 3001;
-
+const PORT = process.env.PORT || 8000;
 server.use(middlewares);
+server.use(
+  jsonServer.rewriter({
+    "/api/*": "/$1",
+  })
+);
 server.use(router);
-
 server.listen(PORT, () => {
-    console.log('Server is running');
-})
+  console.log("Server is running");
+});
