@@ -13,6 +13,8 @@ import {
 } from "./CreditUtils"; 
  
 import "react-credit-cards/es/styles-compiled.css"; 
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
  
 export default class App extends React.Component { 
   state = { 
@@ -68,9 +70,12 @@ export default class App extends React.Component {
 
  
     return ( 
-      <div key="Payment" className="container"> 
-        <div className="App-payment" style={{paddingTop: '150px'}}> 
+      <div key="Payment" className="container" style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}> 
+      
+        <div className="App-payment" style={{ width: '50%',  height: '70%', textAlign:'center', fontSize: '15px'}}> 
+        <h1 style={{color: 'white', marginBottom: '5px'}}>Пожалуйста заполните все поля формы оплаты</h1>
           <Card  
+            style={{width: '100%'}}
             number={number} 
             name={name} 
             expiry={expiry} 
@@ -79,9 +84,54 @@ export default class App extends React.Component {
             callback={this.handleCallback} 
           /> 
           <form className="inputCard"  ref={c => (this.form = c)} onSubmit={this.handleSubmit}> 
-            <div> 
+
+          <form style={{width: '100%', marginTop: '10px', marginBottom: '15px'}}>
+          <div style={{width: '100%'}}> 
               <input 
-              style={{backgroundColor: "#ffffff", borderRadius: "5px", height: '25px', width: '280px', margin: 1}}
+              style={{backgroundColor: "#ffffff", borderRadius: "5px", height: '25px', width: '90%', margin: 1}}
+                type="text" 
+                name="paymentName" 
+                className="form-control" 
+                placeholder="Name"
+                // maxLength={19} 
+                required 
+                onChange={this.handleInputChange} 
+                onFocus={this.handleInputFocus} 
+              /> 
+            </div> 
+
+            <div style={{width: '100%'}}> 
+              <input 
+              style={{backgroundColor: "#ffffff", borderRadius: "5px", height: '25px', width: '90%', margin: 1}}
+                type="text" 
+                name="paymentSurname" 
+                className="form-control" 
+                placeholder="Surname"
+                // maxLength={19} 
+                required 
+                onChange={this.handleInputChange} 
+                onFocus={this.handleInputFocus} 
+              /> 
+            </div> 
+
+            <div style={{width: '100%'}}> 
+              <input 
+              style={{backgroundColor: "#ffffff", borderRadius: "5px", height: '25px', width: '90%', margin: 1}}
+                type="text" 
+                name="paymentAddress" 
+                className="form-control" 
+                placeholder="Address"
+                // maxLength={19} 
+                required 
+                onChange={this.handleInputChange} 
+                onFocus={this.handleInputFocus} 
+              /> 
+            </div> 
+
+          </form>
+            <div style={{width: '100%'}}> 
+              <input 
+              style={{backgroundColor: "#ffffff", borderRadius: "5px", height: '25px', width: '90%', margin: 1}}
                 type="tel" 
                 name="number" 
                 className="form-control" 
@@ -94,7 +144,7 @@ export default class App extends React.Component {
             </div> 
             <div className="form-group"> 
               <input 
-              style={{backgroundColor: "#ffffff", borderRadius: "5px", height: '25px', width: '280px', margin: 1}}
+              style={{backgroundColor: "#ffffff", borderRadius: "5px", height: '25px', width: '90%', margin: 1}}
                 type="text" 
                 name="name" 
                 className="form-control" 
@@ -104,10 +154,10 @@ export default class App extends React.Component {
                 onFocus={this.handleInputFocus} 
               /> 
             </div> 
-            <div className="row"> 
+            <div className="row" className="form-group"> 
               <div className="col-6"> 
                 <input 
-                style={{backgroundColor: "#ffffff", borderRadius: "5px", height: '25px', width: '280px', margin: 1}}
+                style={{backgroundColor: "#ffffff", borderRadius: "5px", height: '25px', width: '90%', margin: 1}}
                   type="tel" 
                   name="expiry" 
                   className="form-control" 
@@ -120,7 +170,7 @@ export default class App extends React.Component {
               </div> 
               <div className="col-6"> 
                 <input 
-                  style={{backgroundColor: "#ffffff", borderRadius: "5px", height: '25px', width: '280px', margin: 1}}
+                  style={{backgroundColor: "#ffffff", borderRadius: "5px", height: '25px', width: '90%', margin: 1}}
                   type="tel" 
                   name="cvc" 
                   className="form-control" 
@@ -134,7 +184,7 @@ export default class App extends React.Component {
             </div> 
             <input type="hidden" name="issuer" value={issuer} /> 
             <div className="form-actions"> 
-              <button className="button" style={{marginTop:"10px"}}>Оплатить покупку</button> 
+              <Link to="/"><Button className="button" onClick={() => alert('Спасибо за покупку!')} style={{marginTop:"10px", width: '100%', height: 'auto'}} variant="contained" color='secondary'>Оплатить покупку</Button></Link> 
             </div> 
           </form> 
            
