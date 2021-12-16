@@ -202,7 +202,7 @@ const Navbar = () => {
                   <AddShoppingCartIcon />
                 </Badge>
             </IconButton>
-          <p>cart</p>
+          <p>Cart</p>
         </MenuItem>
         <MenuItem>
           <IconButton
@@ -214,7 +214,7 @@ const Navbar = () => {
               <FavoriteBorderIcon />
             </Badge>
           </IconButton>
-          <p>FavoriteBorder</p>
+          <p>Favorite</p>
         </MenuItem>
         <MenuItem onClick={handleProfileMenuOpen}>
           <IconButton

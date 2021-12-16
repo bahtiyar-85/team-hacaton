@@ -27,5 +27,16 @@
 }
 
 .form-control{
-    width: 200px;
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 19px;
+        padding: 10px;
+        letter-spacing: 2px;
+        border-radius: 5px;
+        margin-top: 10px;
+}
+
+.form-group{
+    width: 100%;
 }
